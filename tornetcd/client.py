@@ -6,6 +6,7 @@
 tornetcd
 A python async-etcd client.
 """
+import logging
 import json
 import random
 from copy import copy
@@ -16,7 +17,6 @@ try:
 except ImportError:
     from urllib.parse import urlparse
 from functools import wraps
-from tornado.log import gen_log as _log
 from tornado.httpclient import HTTPRequest, HTTPError
 from tornado.httputil import urlencode, url_concat
 from tornado.concurrent import return_future, Future
@@ -25,6 +25,7 @@ from tornado.ioloop import PeriodicCallback
 from etcd_result import EtcdResult
 from . import exceptions as etcdexcept
 
+_log = logging.getLogger(__name__)
 
 class Client(object):
     """
