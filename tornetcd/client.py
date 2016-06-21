@@ -661,7 +661,7 @@ class Client(object):
 
             if not exc:
                 response = future.result()
-                local_index[0] = response.modifiedIndex + 1
+                # local_index[0] = response.modifiedIndex + 1
                 watch_again(_cb)
                 callback(response)
             else:
