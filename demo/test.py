@@ -10,7 +10,7 @@ from tornado.gen import sleep
 
 def setUp(self):
     self.ioloop = ioloop.IOLoop.instance()
-    self.client = Client(host=['127.0.0.1:2370', '127.0.0.1:2371', '127.0.0.1:2372'],
+    self.client = Client(host=['127.0.0.1:2370', '127.0.0.1:2371', '127.0.0.1:2372', '127.0.0.1:2379'],
                          httpclient=httpclient.AsyncHTTPClient(),
                          ioloop=self.ioloop)
 
