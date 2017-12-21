@@ -134,7 +134,14 @@ class Client(object):
     @return_future
     def search_machine(self, callback=None):
         uri = self._base_url + self.version_prefix + '/machines'
+        validate_cert = True if self.cert_options else False
         req = HTTPRequest(uri, self._MGET, request_timeout=self.read_timeout,
+                          validate_cert=validate_cert,
+                          ca_certs=self.cert_options.get('ca_certs', None),
+                          client_key=self.cert_options.get('client_key', None),
+                          client_cert=self.cert_options.get('client_cert', None),
+                          auth_username=self.username,
+                          auth_password=self.password
                           follow_redirects=self.allow_redirect, )
         response_future = self.http.fetch(req, callback=lambda result: result)
 
