@@ -141,8 +141,8 @@ class Client(object):
                           client_key=self.cert_options.get('client_key', None),
                           client_cert=self.cert_options.get('client_cert', None),
                           auth_username=self.username,
-                          auth_password=self.password
-                          follow_redirects=self.allow_redirect, )
+                          auth_password=self.password,
+                          follow_redirects=self.allow_redirect)
         response_future = self.http.fetch(req, callback=lambda result: result)
 
         def _callback(fut):
